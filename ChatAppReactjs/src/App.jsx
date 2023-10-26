@@ -5,7 +5,10 @@ function App() {
   return (
     <div className=" h-screen bg-[#71C9CE] flex justify-center items-center">
       {/* <Outlet/> */}
-      <All.SignIn/>
+      {/* <All.SignIn/> */}
+      {/* <All.SignUp/> */}
+      {/* <All.Chat/> */}
+      <All.Msg/>
     </div>
   )
 }
