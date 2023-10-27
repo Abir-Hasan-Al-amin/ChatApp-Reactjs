@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import google from '../assets/google.png'
+import { useNavigate } from "react-router-dom";
 function SignIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onclickHandle = () => {
     console.log(email, password);
   };
-  const hi=()=>{
-    console.log("h1");
-  }
   return (
-    <div className=" bg-[#CBF1F5] w-80 xl:w-[500px]  rounded-md shadow-md">
+    <div className=" bg-[#ABBCEA]  w-80 xl:w-[500px]  rounded-md shadow-md">
       <div className="flex flex-col justify-center items-center gap-6">
         <h1 className=" text-4xl font-bold my-10">Chat App</h1>
         <input
@@ -39,7 +38,7 @@ function SignIn() {
         <img  src={google} className="w-6"/>
           Sign In  with Google
         </button>
-        <p className=" text-sm mb-8">Don't have an account? <span className="font-bold cursor-pointer" onClick={hi}>Sign Up</span></p>
+        <p className=" text-sm mb-8">Don't have an account? <span className="font-bold cursor-pointer" onClick={()=>navigate("/SignUp")}>Sign Up</span></p>
       </div>
     </div>
   );
