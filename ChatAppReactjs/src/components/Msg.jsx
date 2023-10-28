@@ -70,14 +70,14 @@ function Msg() {
   };
   return (
     <div className="h-full w-full lg:w-[700px] lg:h-[90%] lg:rounded-xl bg-[#ABBCEA] flex flex-col">
-      <div className="flex p-4 my-5 lg:p-3 gap-5">
+      <div className="flex p-4 my-5 lg:p-3 gap-5 h-[10%]">
         <img src={photo} className="md:ml-10 w-12 h-12 rounded-full" />
         <p className=" font-medium text-3xl md:text-4xl ">{name}</p>
       </div>
-      <div className=" rounded-t-xl  lg:rounded-xl flex flex-col flex-1">
-        <div className=" bg-[#FFFFFF] rounded-t-xl">
+      <div className=" rounded-t-xl  lg:rounded-xl flex flex-col h-[85%]">
+        <div className=" bg-[#FFFFFF] rounded-t-xl h-[100%] overflow-y-scroll">
           {messages.length > 0 ? (
-            <ul className="p-3 h-screen  overflow-y-scroll">
+            <ul className="p-3">
               {messages.map((msg) => {
                 return (
                   <li
@@ -91,7 +91,7 @@ function Msg() {
                     }`}>{msg.msg}</p>
                     <p className={`${
                       currentUserID === msg.uid ? "text-end" : "text-start"
-                    }  text-xs `}>{currentUserID === msg.uid ? currentUserName : name}</p>
+                    }  text-xs `}>{currentUserID === msg.uid ? "" : name}</p>
                   </li>
                 );
               })}
