@@ -65,12 +65,14 @@ function SignIn() {
         <h1 className=" text-4xl font-bold my-10">Chat App</h1>
         <input
           type="text"
+          placeholder="Email"
           className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
+          placeholder="password"
           className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

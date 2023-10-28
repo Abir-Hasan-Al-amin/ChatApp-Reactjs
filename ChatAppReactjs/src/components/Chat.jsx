@@ -84,7 +84,7 @@ function Chat() {
           <AiOutlineSearch className="w-7 h-7 lg:w-8 lg:h-8" />
         </button>
       </div>
-      <div className=" bg-[#A6E3E9] flex-1 rounded-xl  lg:rounded-xl ">
+      <div className=" bg-[#A6E3E9] flex-1 rounded-xl  lg:rounded-xl overflow-y-scroll">
         <ul className="p-3">
           {users.map((user) => (
             <li
