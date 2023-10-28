@@ -1,19 +1,67 @@
-import React, { useState } from 'react'
-import google from '../assets/google.png'
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth, db } from "../config/firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [conPassword, setConPassword] = useState("");
   const onclickHandle = () => {
-    console.log(email, password);
+    if (password === conPassword) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          const userData = {
+            Name: userName,
+            Email: email,
+            Profile : "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+          };
+          const userDocRef = doc(collection(db, "users"), user.uid);
+          setDoc(userDocRef, userData)
+            .then(() => {
+              return signOut(auth);
+            })
+            .then(() => {
+              setEmail("");
+              setPassword("");
+              setUserName("");
+              setConPassword("");
+              alert("Register Completed");
+            })
+            .catch((error) => {
+              console.error("Error adding document: ", error);
+              console.error("Error code:", error.code);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (error.code === "auth/email-already-in-use") {
+            alert("User already exists");
+          } else{
+            console.error("Error adding document: ", errorCode,errorMessage);
+          }
+        });
+    } else {
+      alert("password Doesn't match");
+    }
   };
   return (
     <div className=" bg-[#ABBCEA]  w-80 xl:w-[500px]  rounded-md shadow-md">
       <div className="flex flex-col justify-center items-center gap-6">
         <h1 className=" text-4xl font-bold my-10">Chat App</h1>
         <input
-          placeholder='Email'
+          placeholder="User Name"
+          type="text"
+          className=" outline-none w-60 xl:w-80 h rounded-md p-2"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <input
+          placeholder="Email"
           type="text"
           className=" outline-none w-60 xl:w-80 h rounded-md p-2"
           value={email}
@@ -21,17 +69,17 @@ function SignUp() {
         />
         <input
           type="password"
-          placeholder='Password'
+          placeholder="Password"
           className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
-          placeholder='Confirm Password'
+          placeholder="Confirm Password"
           type="password"
           className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={conPassword}
+          onChange={(e) => setConPassword(e.target.value)}
         />
         <button
           onClick={onclickHandle}
@@ -39,18 +87,18 @@ function SignUp() {
         >
           Sign Up
         </button>
-        <p className="font-bold">or</p>
-        <button
-          onClick={onclickHandle}
-          className=" bg-[#A6E3E9]  h-12  w-60 xl:w-80 rounded-2xl shadow-md font-medium flex gap-2 justify-center items-center"
-        >
-        <img  src={google} className="w-6"/>
-          Sign Up  with Google
-        </button>
-        <p className=" text-sm mb-8">Already have an account? <span className="font-bold cursor-pointer" onClick={()=>navigate("/")}>Sign In</span></p>
+        <p className=" text-sm mb-8">
+          Already have an account?{" "}
+          <span
+            className="font-bold cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            Sign In
+          </span>
+        </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
