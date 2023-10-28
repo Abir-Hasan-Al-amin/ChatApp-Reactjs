@@ -33,6 +33,7 @@ function Chat() {
             name: selectedUser.Name,
             photo: selectedUser.Profile,
             currentUserID: currentUser.uid,
+            currentUserName: currentUser.displayName,
           },
         });
       }
@@ -83,7 +84,7 @@ function Chat() {
           <AiOutlineSearch className="w-7 h-7 lg:w-8 lg:h-8" />
         </button>
       </div>
-      <div className=" bg-[#A6E3E9] flex-1 rounded-xl  lg:rounded-xl overflow-hidden overflow-y-scroll">
+      <div className=" bg-[#A6E3E9] flex-1 rounded-xl  lg:rounded-xl ">
         <ul className="p-3">
           {users.map((user) => (
             <li

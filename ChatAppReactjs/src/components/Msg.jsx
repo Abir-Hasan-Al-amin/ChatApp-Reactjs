@@ -1,39 +1,62 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { BsUpload, BsSend } from "react-icons/bs";
+import { BsSend } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { db } from "../config/firebase";
 function Msg() {
   const location = useLocation();
-  const { conversationID, name, photo, currentUserID } = location.state || {};
+  const { conversationID, name, photo, currentUserID,currentUserName } = location.state || {};
   const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState("");
-  const fetchMessages = async () => {
-    try {
-      const conversationRef = collection(
-        db,
-        "conversations",
-        conversationID,
-        "messages"
-      );
-      const querySnapshot = await getDocs(conversationRef);
-      let data = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
-      setMessages(data);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
+  const [messages, setMessages] = useState([]);
   useEffect(() => {
+    let unsubscribe;
+
+    const fetchMessages = async () => {
+      try {
+        const conversationRef = collection(
+          db,
+          "conversations",
+          conversationID,
+          "messages"
+        );
+        const q = query(conversationRef, orderBy("timestamp"));
+
+        unsubscribe = onSnapshot(q, (querySnapshot) => {
+          let data = [];
+          querySnapshot.forEach((doc) => {
+            data.push({ id: doc.id, ...doc.data() });
+          });
+          setMessages(data);
+        });
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+
+      return () => {
+        if (unsubscribe) {
+          unsubscribe();
+        }
+      };
+    };
+
     fetchMessages();
   }, [conversationID]);
 
   const handleSendMessage = async () => {
     if (newMessage.trim() !== "") {
       try {
-        const conversationRef = collection(db, "conversations", conversationID, "messages");
+        const conversationRef = collection(
+          db,
+          "conversations",
+          conversationID,
+          "messages"
+        );
         await addDoc(conversationRef, {
           uid: currentUserID,
           msg: newMessage,
@@ -51,18 +74,27 @@ function Msg() {
         <img src={photo} className="md:ml-10 w-12 h-12 rounded-full" />
         <p className=" font-medium text-3xl md:text-4xl ">{name}</p>
       </div>
-      <div className="flex-1 rounded-t-xl  lg:rounded-xl flex flex-col">
-        <div className=" bg-[#FFFFFF] h-20 flex-1 rounded-t-xl">
+      <div className=" rounded-t-xl  lg:rounded-xl flex flex-col flex-1">
+        <div className=" bg-[#FFFFFF] rounded-t-xl">
           {messages.length > 0 ? (
-            <ul className="p-3">
-              {messages.map((msg) => (
-                <li
-                  key={msg.id}
-                  className="flex items-center w-min gap-3 p-3 m-3 bg-[#CBF1F5] rounded-2xl"
-                >
-                  <p className="font-medium md:text-xl">{msg.msg}</p>
-                </li>
-              ))}
+            <ul className="p-3 h-screen  overflow-y-scroll">
+              {messages.map((msg) => {
+                return (
+                  <li
+                    key={msg.id}
+                    className={`p-3 m-3 rounded-2xl ${
+                      currentUserID === msg.uid ? "bg-[#CBF1F5]" : "bg-[#FBECB2]"
+                    }`}
+                  >
+                    <p className={`font-medium md:text-xl ${
+                      currentUserID === msg.uid ? "text-end" : "text-start"
+                    }`}>{msg.msg}</p>
+                    <p className={`${
+                      currentUserID === msg.uid ? "text-end" : "text-start"
+                    }  text-xs `}>{currentUserID === msg.uid ? currentUserName : name}</p>
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <p></p>
