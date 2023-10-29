@@ -33,7 +33,6 @@ function Chat() {
             name: selectedUser.Name,
             photo: selectedUser.Profile,
             currentUserID: currentUser.uid,
-            currentUserName: currentUser.displayName,
           },
         });
       }
@@ -74,7 +73,7 @@ function Chat() {
   };
 
   if (!currentUser) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
   return (
     <div className="h-full w-full lg:w-[700px] lg:h-[90%] lg:rounded-xl bg-[#ABBCEA] flex flex-col">
