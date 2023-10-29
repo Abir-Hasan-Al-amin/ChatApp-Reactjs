@@ -10,7 +10,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
   const onclickHandle = () => {
-    if (password === conPassword) {
+    if (password === conPassword && userName.trim() !=="") {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -46,7 +46,7 @@ function SignUp() {
           }
         });
     } else {
-      alert("password Doesn't match");
+      alert("password Doesn't match or Name is Empty");
     }
   };
   return (
