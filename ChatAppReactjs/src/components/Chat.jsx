@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { auth, db } from "../config/firebase";
-import { getDocs, collection, getDoc, setDoc, doc } from "firebase/firestore";
+import { getDocs, collection} from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 function Chat() {
