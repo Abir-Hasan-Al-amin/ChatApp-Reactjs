@@ -11,10 +11,10 @@
 
 # Screen Shots :
 
-![chat](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/6701b62b-4125-4b74-a430-097c206eca32)
-![0 2](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/0981692a-caa7-4714-81c8-c1633ca40742)
-![1](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/639a2023-25d7-46e5-8ae0-fd833fc2f177)
-![google](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/d1d47ff3-991f-475b-bdab-dcd232b2fb60)
-![2](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/e5b79010-4c74-4402-861c-0edbbbb6d06a)
-![4](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/6afd9330-3b12-4fed-babc-21726751fdff)
-![5](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/8f12d1d2-a7c4-4e8b-89ea-c0c5a3f0b3f9)
+![image](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/2e4a1656-29d2-4dd0-8c53-0386ff71bb14)
+![image](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/66d4e976-0aee-4238-b965-8343650ca776)
+![Untitled design](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/5e99f77c-e1f7-4d5f-a6c6-6f1df146a214)
+![image](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/3b375d14-62e8-4c59-81d5-e267bb3b3efb)
+![image](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/dd3d9c4d-ad32-465c-a099-400d2c9656f7)
+![image](https://github.com/Abir-Hasan-Al-amin/ChatApp-Reactjs/assets/140844292/dbebf27d-70a9-4aad-8d95-272887b39e33)
+
