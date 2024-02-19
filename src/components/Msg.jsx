@@ -76,13 +76,13 @@ function Msg() {
   }, [messages])
   
   return (
-    <div className="h-full w-full lg:w-[700px] lg:h-[90%] lg:rounded-xl bg-[#ABBCEA] flex flex-col">
+    <div className="h-full w-full lg:w-[700px] lg:h-[90%] lg:rounded-xl bg-[#292F3F] text-[#F7F7F7] flex flex-col">
       <div className="flex p-4 my-5 lg:p-3 gap-5 h-[10%]">
         <img src={photo} className="md:ml-10 w-12 h-12 rounded-full" />
         <p className=" font-medium text-3xl md:text-4xl ">{name}</p>
       </div>
       <div className=" rounded-t-xl  lg:rounded-xl flex flex-col h-[85%]">
-        <div className=" bg-[#FFFFFF] rounded-t-xl h-[100%] overflow-hidden overflow-y-scroll snap-end">
+        <div className=" bg-[#373E4E] no-scrollbar rounded-t-xl h-[100%] overflow-hidden overflow-y-scroll snap-end">
           {messages.length > 0 ? (
             <ul className="p-3">
               {messages.map((msg) => {
@@ -90,7 +90,7 @@ function Msg() {
                   <li
                     key={msg.id}
                     className={`p-3 m-3 rounded-2xl ${
-                      currentUserID === msg.uid ? "bg-[#CBF1F5] ml-auto" : "bg-[#FBECB2]"
+                      currentUserID === msg.uid ? "bg-[#7A8194] ml-auto" : "bg-[#8390FA]"
                     } w-fit max-w-[240px] break-words`}
                   >
                     <p className={`font-medium md:text-xl${
@@ -105,9 +105,9 @@ function Msg() {
           )}
           <div ref={bottomRef}></div>
         </div>
-        <div className=" flex items-center p-3 bg-[#8EACCD]  lg:rounded-b-xl justify-around">
+        <div className=" flex items-center p-3 bg-[#292F3F]  lg:rounded-b-xl justify-around">
           <input
-            className="font-medium md:text-xl w-[80%] h-10 rounded-full outline-none p-3 shadow-sm"
+            className="font-medium md:text-xl w-[80%] h-10 rounded-full  bg-[#7A8194] outline-none p-3 shadow-sm"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
           />

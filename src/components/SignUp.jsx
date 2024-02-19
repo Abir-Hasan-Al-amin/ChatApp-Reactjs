@@ -50,47 +50,47 @@ function SignUp() {
     }
   };
   return (
-    <div className=" bg-[#ABBCEA]  w-80 xl:w-[500px]  rounded-md shadow-md">
+    <div className=" bg-[#292F3F]  w-80 xl:w-[500px] text-[#F7F7F7] rounded-md shadow-md">
       <div className="flex flex-col justify-center items-center gap-6">
         <h1 className=" text-4xl font-bold my-10">Chat App</h1>
         <input
           placeholder="User Name"
           type="text"
-          className=" outline-none w-60 xl:w-80 h rounded-md p-2"
+          className=" outline-none w-60 xl:w-80 h rounded-md p-2  bg-[#7A8194]"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
         <input
           placeholder="Email"
           type="text"
-          className=" outline-none w-60 xl:w-80 h rounded-md p-2"
+          className=" outline-none w-60 xl:w-80 h rounded-md p-2  bg-[#7A8194]"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
+          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2  bg-[#7A8194]"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           placeholder="Confirm Password"
           type="password"
-          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
+          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2  bg-[#7A8194]"
           value={conPassword}
           onChange={(e) => setConPassword(e.target.value)}
         />
         <button
           onClick={onclickHandle}
-          className=" bg-[#A6E3E9]  h-11  w-60 xl:w-80 rounded-2xl shadow-md font-medium"
+          className=" bg-[#289BD5]  h-11  w-60 xl:w-80 rounded-2xl shadow-md font-medium"
         >
           Sign Up
         </button>
         <p className=" text-sm mb-8">
           Already have an account?{" "}
           <span
-            className="font-bold cursor-pointer"
+            className="font-bold cursor-pointer text-[#289BD5]"
             onClick={() => navigate("/")}
           >
             Sign In

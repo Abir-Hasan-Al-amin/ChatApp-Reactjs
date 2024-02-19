@@ -60,41 +60,41 @@ function SignIn() {
       });
   };
   return (
-    <div className=" bg-[#ABBCEA]  w-80 xl:w-[500px]  rounded-md shadow-md">
+    <div className=" bg-[#292F3F]  w-80 xl:w-[500px] text-[#F7F7F7] rounded-md shadow-md">
       <div className="flex flex-col justify-center items-center gap-6">
         <h1 className=" text-4xl font-bold my-10">Chat App</h1>
         <input
           type="text"
           placeholder="Email"
-          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
+          className=" outline-none h-10 w-60 xl:w-80  bg-[#7A8194] rounded-md px-2"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="password"
-          className=" outline-none h-10 w-60 xl:w-80 rounded-md px-2"
+          placeholder="Password"
+          className=" outline-none h-10 w-60 xl:w-80 rounded-md bg-[#7A8194] px-2"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
           onClick={logIn}
-          className="bg-[#A6E3E9]  h-12  w-60 xl:w-80 rounded-2xl shadow-md font-medium flex gap-2 justify-center items-center"
+          className="bg-[#289BD5]  h-12  w-60 xl:w-80 rounded-2xl shadow-md font-medium flex gap-2 justify-center items-center"
         >
           Sign In
         </button>
         <p className="font-bold">or</p>
         <button
           onClick={googleLogIn}
-          className=" bg-[#A6E3E9]  h-12  w-60 xl:w-80 rounded-2xl shadow-md font-medium flex gap-2 justify-center items-center"
+          className=" bg-[#1e5478]  h-12  w-60 xl:w-80 rounded-2xl shadow-md font-medium flex gap-2 justify-center items-center"
         >
           <img src={google} className="w-6" />
           Sign In with Google
         </button>
         <p className=" text-sm mb-8">
-          Don't have an account?
+          Don't have an account?{" "}
           <span
-            className="font-bold cursor-pointer"
+            className="font-bold cursor-pointer text-[#289BD5]"
             onClick={() => navigate("/SignUp")}
           >
             Sign Up

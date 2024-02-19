@@ -3,7 +3,7 @@ import {Route, BrowserRouter, Routes } from "react-router-dom";
 import All from './components/All'
 function App() {
   return (
-    <div className=" h-screen bg-[#27374D] flex justify-center items-center">
+    <div className=" h-screen bg-[#1B202D] flex justify-center items-center">
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<All.SignIn/> }/>
